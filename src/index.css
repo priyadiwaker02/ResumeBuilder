@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+}
+header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: #040513;
+  color: #fff;
+  font-family: Gantari;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* From Uiverse.io by nikk7007 */
+.button {
+  --color: #845442;
+  padding: 0.8em 1.7em;
+  background-color: transparent;
+  border-radius: .3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 400;
+  font-size: 17px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+  width: 20rem;
+  padding: 1rem;
+}
+
+.button::before,
+.button::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.button::before {
+  top: -1em;
+  left: -1em;
+}
+
+.button::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.button:hover {
+  color: rgb(10, 25, 30);
+}
+
+.button:active {
+  filter: brightness(.8);
+}
+
+section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slider{
+  max-width: 38rem;
+  min-height: 600px;
+  width: 100%;
+  background:url(./assets/home-animation.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  width: 25rem;
+  height: 25rem;
+  background:radial-gradient(circle, rgb(28, 21, 74) 0%, rgb(28, 21, 74));
+  border-radius: 50%;
+  box-shadow: 0 0 20rem 12rem rgb(28, 21, 74); /* Glow effect */
+  z-index: -1; /* Place behind content */
+  filter: blur(10px); /* Extra blur for softness */
+}
+.spinner {
+  animation: spinner 12s linear infinite; /* Add duration, timing function, and iteration count */
+}
+.slick-slide{
+  padding: 1rem;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg); /* Start at 0 degrees for smooth rotation */
+  }
+  50% {
+    transform: rotate(180deg); /* Halfway point */
+  }
+  100% {
+    transform: rotate(360deg); /* Full rotation */
+  }
+}
+
+@media(max-width:748px){
+  .circle{
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    background: radial-gradient(circle, rgb(28, 21, 74) 0%, rgb(28, 21, 74));
+    border-radius: 50%;
+    box-shadow: 0 0 18rem 6rem rgb(28, 21, 74);
+    z-index: -1;
+    filter: blur(10px);
+  }
+  .slider{ 
+    position: relative;
+    padding: 0;
+    min-height: 286px;
+  }
+  .button{
+    width: 20rem;
+    padding: 10px;
+  }
+}
+
+
+.sidebar{
+  background-color: #040513
+}
+
+.slider-container {
+  @apply flex overflow-hidden;
+}
+
+.slide {
+  @apply flex-shrink-0 w-full h-full flex items-center justify-center;
+}
+
+.slide img {
+  @apply w-full h-auto;
+}
