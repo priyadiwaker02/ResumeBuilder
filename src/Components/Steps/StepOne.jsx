@@ -2,7 +2,7 @@ import React from "react";
 
 const StepOne = ({ formData, handleChange }) => {
   return (
-    <div className="bg-black p-8 rounded-lg shadow-lg w-full mx-auto">
+    <div className="bg-black p-8 rounded-lg shadow-lg w-full mx-auto h-[70vh]">
       <form className="space-y-6">
         <div className="grid grid-cols-2 gap-6">
           <div>

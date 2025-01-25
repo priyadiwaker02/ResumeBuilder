@@ -28,7 +28,7 @@ const Education = ({ formData, handleChange }) => {
   };
 
   return (
-    <div className="bg-black p-8 rounded-lg shadow-lg w-full mx-auto">
+    <div className="bg-black p-8 rounded-lg shadow-lg w-full mx-auto h-[70vh]">
       <h2 className="text-white text-2xl font-bold mb-6">Education</h2>
 
       {educationList.map((education, index) => (

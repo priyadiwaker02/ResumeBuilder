@@ -15,7 +15,7 @@ function App() {
     <div className="main">
       <Router>
         {/* Header should typically be inside Router to access navigation if needed */}
-        <Header />
+        {/* <Header /> */}
         <Routes>
           {/* Define your routes */}
           <Route path="/" element={<Hero />} />
