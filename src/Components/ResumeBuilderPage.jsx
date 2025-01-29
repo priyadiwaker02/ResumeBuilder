@@ -73,12 +73,21 @@ const ResumeBuilderPage = () => {
         <div className="transform scale-[0.4] w-fit">
           {renderTemplate()}
           {/* Preview Button */}
-          <button
+        <div className="flex justify-center items-center mt-[10vh] gap-[12rem]">
+        <button
             onClick={openModal}
-            className="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-800 transition mt-[10vh] ml-[12rem] transform scale-[2.5]"
+            className="bg-orange-600 text-white px-2 py-2 rounded-lg hover:bg-orange-800 transition transform scale-[2.5]"
           >
             Preview Resume
           </button>
+
+          <button
+            onClick={openModal}
+            className="bg-orange-600 text-white px-2 py-2 rounded-lg hover:bg-orange-800 transition transform scale-[2.5]"
+          >
+            Download
+          </button>
+        </div>
 
         </div>
 
