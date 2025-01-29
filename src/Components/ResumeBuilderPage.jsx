@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom"; // To get the selected template
 import ResumeTemplate from "./Template1";
 import ResumeTemplate2 from "./Template2";
@@ -6,6 +6,8 @@ import ResumeTemplate3 from "./Template3";
 import MultistepForm from "./MultistepForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import html2canvas from "html2canvas";
+import { useReactToPrint } from "react-to-print";
 
 
 const ResumeBuilderPage = () => {
@@ -27,6 +29,14 @@ const ResumeBuilderPage = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const resumeRef = useRef(); // Reference to resume template
+
+  const handlePrint = useReactToPrint({
+    content: () => resumeRef.current || document.getElementById("resume-template"),
+    documentTitle: "resume",
+  });
+  
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -40,11 +50,11 @@ const ResumeBuilderPage = () => {
   const renderTemplate = () => {
     switch (selectedTemplate) {
       case "template2":
-        return <ResumeTemplate2 formData={formData} />;
+        return <ResumeTemplate2 ref={resumeRef} formData={formData} />;
       case "template3":
-        return <ResumeTemplate3 formData={formData} />;
+        return <ResumeTemplate3 ref={resumeRef} formData={formData} />;
       default:
-        return <ResumeTemplate />;
+        return <ResumeTemplate ref={resumeRef} />;
     }
   };
 
@@ -60,6 +70,7 @@ const ResumeBuilderPage = () => {
 
 
 
+
   return (
     <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
       {/* Left Section - Form */}
@@ -71,27 +82,29 @@ const ResumeBuilderPage = () => {
       {/* Right Section - Resume Preview */}
       <div className="flex flex-col justify-center items-center h-[90vh] w-[24rem]">
         <div className="transform scale-[0.4] w-fit">
-          {renderTemplate()}
-          {/* Preview Button */}
-        <div className="flex justify-center items-center mt-[10vh] gap-[12rem]">
-        <button
-            onClick={openModal}
-            className="bg-orange-600 text-white px-2 py-2 rounded-lg hover:bg-orange-800 transition transform scale-[2.5]"
-          >
-            Preview Resume
-          </button>
+          {/* Resume Template */}
+          <div ref={resumeRef}>
+            {renderTemplate()}
+          </div>
 
-          <button
-            onClick={openModal}
-            className="bg-orange-600 text-white px-2 py-2 rounded-lg hover:bg-orange-800 transition transform scale-[2.5]"
-          >
-            Download
-          </button>
+
+          {/* Buttons */}
+          <div className="flex justify-center items-center mt-[10vh] gap-[12rem]">
+            <button
+              onClick={openModal}
+              className="bg-orange-600 text-white px-2 py-2 rounded-lg hover:bg-orange-800 transition transform scale-[2.5]"
+            >
+              Preview Resume
+            </button>
+
+            <button
+              onClick={handlePrint}
+              className="bg-orange-600 text-white px-2 py-2 rounded-lg hover:bg-orange-800 transition transform scale-[2.5]"
+            >
+              Download
+            </button>
+          </div>
         </div>
-
-        </div>
-
-
       </div>
 
       {/* Modal for Resume Preview */}

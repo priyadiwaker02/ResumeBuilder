@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import "/ResumeTemplate.css";
 import "./Templates.css";
 import girl1 from '../assets/girl1.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
-const Template2 = ({ formData }) => {
-
+const Template2 = forwardRef((props, ref) => {
+  const { formData } = props;
 
   return (
 
-    <div className="resume max-w-2xl mx-auto bg-white p-8 shadow-lg">
+    <div ref={ref} className="resume max-w-2xl mx-auto bg-white p-8 shadow-lg">
       {/* Header */}
       <div className="header flex items-center border-b pb-6 px-8">
         <div className="image">
@@ -218,7 +218,8 @@ const Template2 = ({ formData }) => {
       </div>
     </div>
 
-  );
-};
+          )
+        }
+);
 
 export default Template2;
