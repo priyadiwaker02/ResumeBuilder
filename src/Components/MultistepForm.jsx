@@ -4,11 +4,12 @@ import Education from "./Steps/Education";
 import Skills from "./Steps/Skills";
 import Sidebar from "./Sidebar";
 import Experience from "./Steps/Experience";
+import Projects from "./Steps/Projects";
 
 const MultistepForm = ({ formData, handleChange }) => {
   const [step, setStep] = useState(1);
 
-  const steps = ["Basic Details", "Education", "Skills", "Experience"];
+  const steps = ["Basic Details", "Education", "Skills", "Experience", "Projects"];
 
   const nextStep = () => {
     setStep((prevStep) => (prevStep < steps.length ? prevStep + 1 : prevStep));
@@ -28,6 +29,8 @@ const MultistepForm = ({ formData, handleChange }) => {
         return <Skills formData={formData} handleChange={handleChange} />;
       case 4:
         return <Experience formData={formData} handleChange={handleChange}/>;
+      case 5:
+        return <Projects formData={formData} handleChange={handleChange} />;
       default:
         return <div className="p-5">Unknown Step</div>;
     }

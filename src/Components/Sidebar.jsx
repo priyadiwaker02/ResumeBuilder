@@ -6,7 +6,7 @@ const Sidebar = ({ currentStep }) => {
     { number: 2, label: "Education" },
     { number: 3, label: "Skills" },
     { number: 4, label: "Experience" },
-    { number: 5, label: "Finalize" },
+    { number: 5, label: "Projects" },
   ];
 
   return (

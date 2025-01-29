@@ -79,8 +79,12 @@ const Template2 = ({ formData }) => {
               })
             ) : (
               <li className="list-disc">
-                <p className="font-semibold">Management Skills</p>
-                <p>Digital Marketing</p>
+                <p >Management Skills</p>
+                <p >Digital Marketing</p>
+                <p>SEO</p>
+                <p>Content Writing</p>
+                <p>UI/UX</p>
+                <p>Data Analytics</p>
               </li>
             )}
           </ul>
@@ -95,7 +99,7 @@ const Template2 = ({ formData }) => {
               ))
             ) : (
               <li className="list-disc">
-                <p className="font-semibold">English</p>
+                <p >English</p>
                 <p>Spanish</p>
                 <p>French</p>
               </li>
@@ -135,26 +139,81 @@ const Template2 = ({ formData }) => {
                 </li>
               ))
             ) : (
-              <li>No work experience added yet.</li>
+              // Dummy Work Experience
+              <li>
+                <div className="flex justify-between">
+                  <p className="font-semibold">Web Developer</p>
+                  <p className="text-sm text-gray-800 font-bold">2023 - Present</p>
+                </div>
+                <p className="text-sm">Tech Solutions Inc.</p>
+                <ul className="list-disc pl-5">
+                  <li>Developed responsive websites using HTML, CSS, and JavaScript.</li>
+                  <li>Collaborated with designers and backend developers to deliver projects on time.</li>
+                </ul>
+              </li>
             )}
           </ul>
 
 
           <h2 className="text-lg font-bold uppercase text-gray-700 mt-8">Projects</h2>
-          <div className="grid grid-cols-2 gap-4 mt-4 text-gray-600">
-            <div>
-              <p className="font-semibold">Bailey Dupont</p>
-              <p>Wardiere Inc. / CEO</p>
-              <p>Phone: 123-456-7890</p>
-              <p>Email: hello@reallygreatsite.com</p>
-            </div>
-            <div>
-              <p className="font-semibold">Harumi Kobayashi</p>
-              <p>Wardiere Inc. / CEO</p>
-              <p>Phone: 123-456-7890</p>
-              <p>Email: hello@reallygreatsite.com</p>
-            </div>
+          <div className="flex flex-col gap-4 mt-4 text-gray-600">
+            {formData.projects && formData.projects.length > 0 ? (
+              formData.projects.map((project, index) => (
+                <div key={index}>
+                  <p className="font-semibold">{project.title || "Project Title"}</p>
+                  <p>{project.description || "Project description here."}</p>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      View Project
+                    </a>
+                  ) : (
+                    <span className="text-gray-500 italic">No link provided</span>
+                  )}
+                </div>
+              ))
+            ) : (
+              <>
+                {/* Fallback Dummy Data */}
+                <div>
+                  <p className="font-semibold">Portfolio Website</p>
+                  <p>
+                    A personal portfolio website to showcase skills and projects, built with
+                    modern web technologies like HTML, CSS, and JavaScript.
+                  </p>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    View Project
+                  </a>
+                </div>
+                <div>
+                  <p className="font-semibold">Adventure Front-end Website</p>
+                  <p>
+                    A visually appealing website for adventure enthusiasts, featuring dynamic
+                    layouts and modern design.
+                  </p>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    View Project
+                  </a>
+                </div>
+              </>
+            )}
           </div>
+
+
         </div>
       </div>
     </div>
